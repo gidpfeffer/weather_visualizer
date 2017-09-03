@@ -8,13 +8,14 @@ class WeatherList extends Component{
     const temps = cityData.list.map(weather => weather.main.temp)
     const humidities = cityData.list.map(weather => weather.main.humidity)
     const pressures = cityData.list.map(weather => weather.main.pressure)
+    const { lat, lon }  = cityData.city.coord;
 
     return (
       <tr key={name}>
-        <td>{name}</td>
-        <td><Chart data={temps} color={"red"} units={"K"}/></td>
-        <td><Chart data={humidities} color={"green"} units={"hPa"}/></td>
-        <td><Chart data={pressures} color={"purple"} units={"%"}/></td>
+        <td>{cityData.city.name}</td>
+        <td><Chart data={temps} color={"red"} units={"K"} /></td>
+        <td><Chart data={humidities} color={"green"} units={"hPa"} /></td>
+        <td><Chart data={pressures} color={"purple"} units={"%"} /></td>
       </tr>
     );
   }
